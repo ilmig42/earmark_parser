@@ -1,6 +1,5 @@
-defmodule Test.Unit.ConvertTest do
-  use ExUnit.Case
-  alias EarmarkParser.{Ast.Inline, Block.IdDef, Context}
+defmodule Test.Unit.Inline.LinkAndImageTest do
+  use Support.InlineTestCase
 
   describe "edge cases" do
     test "empty" do
@@ -32,18 +31,6 @@ defmodule Test.Unit.ConvertTest do
       assert convert(markdown, ctxt) == expected
     end
   end
-  defp convert(content, context \\ %Context{}), do: Inline.convert(content, 42, context).value
-
-  defp with_link(id), do: with_link(Context.update_context(%Context{}), id)
-  defp with_link(ctxt, id) do
-    id_def = %IdDef{
-      annotation: nil,
-      attrs: nil,
-      id: id,
-      lnb: 3,
-      title: "title",
-      url: "lnk1_url",
-    }
-    %{ ctxt | links: Map.put(ctxt.links, id, id_def) }
-  end
 end
+# SPDX-License-Identifier: Apache-2.0
+
