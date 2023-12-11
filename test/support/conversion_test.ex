@@ -1,13 +1,8 @@
 defmodule Test.Support.ConversionTest do
-
-  defmacro using(_opts \\ []) do
+  defmacro test_conversion(content, expected, context \\ nil) do
     quote do
-      def test_conversion(content, expected, context \\ nil) do
-        quote do
-          test unquote(content) do
-            assert_conversion(unquote(content), unquote(expected), unquote(context))
-          end
-        end
+      test "test_conversion: #{unquote(content)}" do
+        assert_conversion(unquote(content), unquote(expected), unquote(context))
       end
     end
   end

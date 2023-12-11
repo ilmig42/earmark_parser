@@ -12,6 +12,8 @@ defmodule Support.InlineTestCase do
       import EarmarkAstDsl
       import Support.AstHelpers, only: [assert_asts_are_equal: 2, ast_from_md: 1, ast_from_md: 2]
 
+      import Test.Support.ConversionTest
+
       defp assert_conversion(content, expected, context \\ nil)
       defp assert_conversion(content, expected, context) when is_list(expected) do
         assert convert(content, context) == expected |> Enum.map(&_mk_ast_tuple/1)
