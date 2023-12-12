@@ -11,7 +11,8 @@ defmodule Test.Unit.Inline.EmphasisTest do
   describe "complicated ;)" do
     test_conversion "*beta __test__*", {"em", ["beta ", {"strong", "test"}]}
     test_conversion "*beta _test_*", {"em", ["beta ", {"em", "test"}]}
-
+    test_conversion "*__strong__*", {"em", {"strong", "strong"}}
+    test_conversion "* **strong** *", {"em", [" ", {"strong", "strong"}, " "]}
   end
 
 end
